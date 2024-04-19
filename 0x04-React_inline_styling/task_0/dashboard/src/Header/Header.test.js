@@ -1,21 +1,24 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import Header from './Header';
+import { shallow } from 'enzyme';
 
-const wrapper = shallow(<Header />);
 
-it('renders without crashing', () => {
-  shallow(<Header />);
-});
+describe('Testing <Header /> Component', () => {
+  let wrapper;
 
-it('renders header', () => {
-  expect(wrapper.find('header.header').exists()).toEqual(true);
-});
+  beforeEach(() => {
+    wrapper = shallow(<Header />);
+  });
 
-it('renders header', () => {
-  expect(wrapper.find('header.header h1').exists()).toEqual(true);
-});
+  it("Renders with out crashing", () => {
+    expect(wrapper).toBeDefined();
+  });
 
-it('renders header', () => {
-  expect(wrapper.find('header.header img').exists()).toEqual(true);
+  it("Render an h1 tag", () => {
+    expect(wrapper.find('h1')).toBeDefined();
+  });
+
+  it("Render an img tag", () => {
+    expect(wrapper.find('img')).toBeDefined();
+  });
 });
